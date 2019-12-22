@@ -1,10 +1,9 @@
 <div class="container my-5 text-center">
-    <h1>Dashboard</h1>
-    <p class="lead mb-3">Welcome <%= username %></p>
+    <h1 class="my-4">Dashboard</h1>
     <%- include('./partials/messages'); %>
     <ul class="nav nav-pills justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" href="/dashboard">Dashboard</a>
+            <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/proposals">Proposals</a>
@@ -13,10 +12,17 @@
             <a class="nav-link" href="/events">Events</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/users">Users</a>
+            <a class="nav-link active" href="/users">Users</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/auth/logout">Logout</a>
         </li>
     </ul>
+    <div class="row">
+        <% users.forEach(function(user){ %>
+            <div class="col-md-6 col-lg-4 my-5">
+                <%- include('user/show', {user: user}); %>
+            </div>
+        <% }); %>
+    </div>
 </div>

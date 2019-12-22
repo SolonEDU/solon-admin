@@ -6,14 +6,14 @@ const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
 axios.defaults.headers.common['Authorization'] = process.env.AUTHORIZATION;
 
-// Users Page
+// Proposals Page
 router.get('/', ensureAuthenticated, (req, res) => {
 	axios
-		.get('/users')
+		.get('/proposals')
 		.then(function(response) {
-			const users = response['data']['users'];
-			res.render('users', {
-				users: users
+			const proposals = response['data']['proposals'];
+			res.render('proposals', {
+				proposals: proposals
 			});
 		})
 		.catch(function(error) {
@@ -21,13 +21,13 @@ router.get('/', ensureAuthenticated, (req, res) => {
 		});
 });
 
-// Delete User Handle
-router.get('/delete/:userID', ensureAuthenticated, (req, res) => {
+// Delete Proposal Handle
+router.get('/delete/:proposalID', ensureAuthenticated, (req, res) => {
 	axios
-		.delete(`/users/${req.params.userID}`)
+		.delete(`/proposals/${req.params.proposalID}`)
 		.then(function(response) {
 			req.flash('success_msg', response['data']['message']);
-			res.redirect('/users');
+			res.redirect('/proposals');
 		})
 		.catch(function(error) {
 			console.log(error);

@@ -1,0 +1,10 @@
+<div class="card">
+    <h5 class="card-header"><%- user.email %></h5>
+    <div class="card-body">
+      <p class="card-text">Full Name: <%- user.firstname %> <%- user.lastname %></p>
+      <a href="/users/delete/<%- user.uid %>" class="btn btn-secondary">Delete User</a>
+    </div>
+    <div class="card-footer text-muted">
+      Language: <%- user.lang %>
+    </div>
+</div>

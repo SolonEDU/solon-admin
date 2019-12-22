@@ -1,0 +1,18 @@
+<div class="card">
+    <h5 class="card-header"><%- proposal.title %></h5>
+    <div class="card-body">
+      <p class="card-text"><%- proposal.description %></p>
+      <div class="row my-3">
+        <div class="p-1 col-sm bg-success">
+            Yea: <%- proposal.numyes %>
+        </div>
+        <div class="p-1 col-sm bg-danger">
+            Nay: <%- proposal.numno %>
+        </div>
+      </div>
+      <a href="/proposals/delete/<%- proposal.pid %>" class="btn btn-secondary">Delete Proposal</a>
+    </div>
+    <div class="card-footer text-muted">
+      <%- proposal.endtime %>
+    </div>
+</div>
