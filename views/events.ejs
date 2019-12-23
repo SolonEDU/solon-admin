@@ -1,0 +1,29 @@
+<div class="container my-5 text-center">
+    <h1 class="my-4">Dashboard</h1>
+    <%- include('./partials/messages'); %>
+    <ul class="nav nav-pills justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link" href="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/proposals">Proposals</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/events">Events</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/users">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/auth/logout">Logout</a>
+        </li>
+    </ul>
+    <hr>
+    <div class="row">
+        <% events.forEach(function(event){ %>
+            <div class="col-md-6 col-lg-4 my-3">
+                <%- include('event/show', {event: event}); %>
+            </div>
+        <% }); %>
+    </div>
+</div>

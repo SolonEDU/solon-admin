@@ -47,11 +47,13 @@ app.use(express.static('public'));
 const indexRoutes = require('./routes/index');
 const authRoutes = require('./routes/auth');
 const proposalRoutes = require('./routes/proposals');
+const eventRoutes = require('./routes/events');
 const userRoutes = require('./routes/users');
 
 app.use('/', indexRoutes);
 app.use('/auth', authRoutes);
 app.use('/proposals', proposalRoutes);
+app.use('/events', eventRoutes);
 app.use('/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;

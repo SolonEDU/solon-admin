@@ -1,0 +1,11 @@
+<div class="card">
+    <h5 class="card-header"><%- event.title %></h5>
+    <div class="card-body">
+      <p class="card-text"><%- event.description %></p>
+      <p class="card-text">Number of Attenders: <%- event.numattenders %></p>
+      <a href="/events/delete/<%- event.eid %>" class="btn btn-secondary">Delete Event</a>
+    </div>
+    <div class="card-footer text-muted">
+        Date: <%- new Date(event.date) %>
+    </div>
+</div>
