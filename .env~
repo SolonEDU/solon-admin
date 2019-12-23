@@ -1,0 +1,6 @@
+DB_USER=postgres
+DB_HOST=solon-db.c4m9wheou96s.us-east-1.rds.amazonaws.com
+DB_DATABASE=solon
+DB_PASSWORD=generator18
+DB_PORT=5433
+AUTHORIZATION=a3pVzjbDNX4Cc81

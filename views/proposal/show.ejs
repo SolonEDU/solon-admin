@@ -13,6 +13,8 @@
       <a href="/proposals/delete/<%- proposal.pid %>" class="btn btn-secondary">Delete Proposal</a>
     </div>
     <div class="card-footer text-muted">
-      <%- proposal.endtime %>
+        Start: <%- new Date(proposal.starttime) %>
+        <hr>
+        End: <%- new Date(proposal.endtime) %>
     </div>
 </div>
