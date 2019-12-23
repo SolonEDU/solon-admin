@@ -34,4 +34,21 @@ router.get('/delete/:proposalID', ensureAuthenticated, (req, res) => {
 		});
 });
 
+function addDays(date, days) {
+	var result = new Date(date);
+	result.setDate(result.getDate() + days);
+	return result;
+}
+
+// New Proposal Handle
+router.post('/new', ensureAuthenticated, (req, res) => {
+	const title = req.body.title;
+	const description = req.body.description;
+	const daysremaining = req.body.daysremaining;
+	const starttime = new Date();
+	const endtime = addDays(starttime, daysremaining);
+	console.log(starttime);
+	console.log(endtime);
+});
+
 module.exports = router;

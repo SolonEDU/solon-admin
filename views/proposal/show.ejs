@@ -1,6 +1,10 @@
 <div class="card border-primary">
-    <h5 class="card-header"><%- proposal.title %></h5>
+    <h5 class="card-header">
+        Proposal ID: <%- proposal.pid %> <hr>
+        <%- proposal.title %>
+    </h5>
     <div class="card-body">
+      <p class="card-text">Proposal ID: <%- proposal.pid %></p>
       <p class="card-text"><%- proposal.description %></p>
       <div class="row my-3">
         <div class="p-1 col-sm bg-success">
