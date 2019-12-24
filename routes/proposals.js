@@ -73,6 +73,7 @@ router.get('/votes', ensureAuthenticated, (req, res) => {
 			const votes = response['data']['votes'];
 			req.flash('success_msg', response['data']['message']);
 			res.render('votes', {
+				pid: pid,
 				votes: votes
 			});
 		})
