@@ -5,7 +5,10 @@
     </h5>
     <div class="card-body">
       <p class="card-text">Full Name: <%- user.firstname %> <%- user.lastname %></p>
-      <a href="/users/delete/<%- user.uid %>" class="btn btn-secondary">Delete User</a>
+      <a href="/users/delete/<%- user.uid %>" class="btn btn-secondary">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Delete User
+    </a>
     </div>
     <div class="card-footer text-muted">
       Language: <%- user.lang %>

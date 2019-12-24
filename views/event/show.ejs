@@ -6,7 +6,10 @@
     <div class="card-body">
       <p class="card-text">Description: <%- event.description %></p>
       <p class="card-text">Number of Attenders: <%- event.numattenders %></p>
-      <a href="/events/delete/<%- event.eid %>" class="btn btn-secondary">Delete Event</a>
+      <a href="/events/delete/<%- event.eid %>" class="btn btn-secondary">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Delete Event
+    </a>
     </div>
     <div class="card-footer text-muted">
         Date: <%- new Date(event.date) %>

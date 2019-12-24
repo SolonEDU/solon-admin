@@ -27,7 +27,7 @@
         <% }); %>
     </div>
     <button type="button" class="btn btn-primary float" data-toggle="modal" data-target="#newProposalModal">
-        <i class="fa fa-plus"></i>
+        <i class="fa fa-plus" aria-hidden="true"></i>
     </button>
     <div class="modal fade" id="newProposalModal" tabindex="-1" role="dialog" aria-labelledby="newProposalModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -46,7 +46,7 @@
                 </div>
                 <div class="form-group">
                   <label for="description" class="col-form-label">Description:</label>
-                  <textarea class="form-control" id="description" name="description" required></textarea>
+                  <textarea rows="10" class="form-control" id="description" name="description" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="daysremaining" class="col-form-label">Days Until Voting on Proposal Ends:</label>

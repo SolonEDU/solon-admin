@@ -13,7 +13,10 @@
             Nay: <%- proposal.numno %>
         </div>
       </div>
-      <a href="/proposals/delete/<%- proposal.pid %>" class="btn btn-secondary">Delete Proposal</a>
+      <a href="/proposals/delete/<%- proposal.pid %>" class="btn btn-secondary">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Delete Proposal
+    </a>
     </div>
     <div class="card-footer text-muted">
         Start: <%- new Date(proposal.starttime) %>

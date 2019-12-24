@@ -46,9 +46,22 @@ router.post('/new', ensureAuthenticated, (req, res) => {
 	const description = req.body.description;
 	const daysremaining = req.body.daysremaining;
 	const starttime = new Date();
-	const endtime = addDays(starttime, daysremaining);
-	console.log(starttime);
-	console.log(endtime);
+	const endtime = addDays(starttime, parseInt(daysremaining));
+	axios
+		.post('/proposals', {
+			title: title,
+			description: description,
+			starttime: starttime,
+			endtime: endtime,
+			uid: null
+		})
+		.then(function(response) {
+			req.flash('success_msg', response['data']['message']);
+			res.redirect('/proposals');
+		})
+		.catch(function(error) {
+			console.log(error);
+		});
 });
 
 module.exports = router;
