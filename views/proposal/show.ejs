@@ -18,6 +18,10 @@
               Total Number of Votes: <%- proposal.numyes + proposal.numno %>
           </div>
       </div>
+      <a href="/proposals/votes?pid=<%- proposal.pid %>" class="btn btn-secondary">
+        <i class="fa fa-vote-yea" aria-hidden="true"></i>
+        View Vote Data
+    </a>
       <a href="/proposals/delete/<%- proposal.pid %>" class="btn btn-secondary">
         <i class="fa fa-trash" aria-hidden="true"></i>
         Delete Proposal

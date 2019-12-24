@@ -50,7 +50,7 @@
                 </div>
                 <div class="form-group">
                     <label for="daysremaining" class="col-form-label">Days Until Voting on Proposal Ends:</label>
-                    <input type="range" class="custom-range form-control" id="daysremaining" name="daysremaining" min="1" max="14" step="1" onchange="updateDaysRemaining(this.value);">
+                    <input type="range" class="custom-range form-control" id="daysremaining" name="daysremaining" min="1" max="14" step="1" oninput="updateDaysRemaining(this.value);">
                     <p class="text-center" id="daysremainingtext">8 days</p>
                 </div>
             </div>

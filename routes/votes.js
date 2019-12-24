@@ -6,21 +6,6 @@ const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
 axios.defaults.headers.common['Authorization'] = process.env.AUTHORIZATION;
 
-// Proposals Page
-router.get('/', ensureAuthenticated, (req, res) => {
-	axios
-		.get('/proposals')
-		.then(function(response) {
-			const proposals = response['data']['proposals'];
-			res.render('proposals', {
-				proposals: proposals
-			});
-		})
-		.catch(function(error) {
-			console.log(error);
-		});
-});
-
 // Delete Proposal Handle
 router.get('/delete/:proposalID', ensureAuthenticated, (req, res) => {
 	axios
@@ -65,10 +50,10 @@ router.post('/new', ensureAuthenticated, (req, res) => {
 });
 
 // Get Vote Data Handle
-router.get('/votes', ensureAuthenticated, (req, res) => {
-	const pid = req.query.pid;
+router.get('/votes/:proposalID', ensureAuthenticated, (req, res) => {
+	const proposalID = req.params.proposalID;
 	axios
-		.get(`/votes?pid=${pid}`)
+		.get(`/votes?pid=${proposalID}`)
 		.then(function(response) {
 			const votes = response['data']['votes'];
 			req.flash('success_msg', response['data']['message']);

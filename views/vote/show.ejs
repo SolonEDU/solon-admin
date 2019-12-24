@@ -1,0 +1,13 @@
+<div class="card border-primary">
+    <h5 class="card-header">
+        Vote ID: <%- vote.vid %>
+    </h5>
+    <div class="card-body">
+        <p class="card-text">User ID of Voter: <%- vote.uid %></p>
+      <p class="card-text">Vote Value: <%- vote.value %></p>
+      <a href="/votes/delete/<%- vote.vid %>" class="btn btn-secondary">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Delete Vote
+    </a>
+    </div>
+</div>
