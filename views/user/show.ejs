@@ -1,9 +1,9 @@
 <div class="card border-primary">
     <h5 class="card-header">
-        User ID: <%- user.uid %> <hr>
-        <%- user.email %>
+        User ID: <%- user.uid %>
     </h5>
     <div class="card-body">
+        <h5 class="card-text">Email: <%- user.email %></h5>
       <p class="card-text">Full Name: <%- user.firstname %> <%- user.lastname %></p>
       <a href="/users/delete/<%- user.uid %>" class="btn btn-secondary">
         <i class="fa fa-trash" aria-hidden="true"></i>
