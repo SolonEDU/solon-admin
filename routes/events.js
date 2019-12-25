@@ -34,6 +34,26 @@ router.get('/delete/:eventID', ensureAuthenticated, (req, res) => {
 		});
 });
 
+// New Event Handle
+router.post('/new', ensureAuthenticated, (req, res) => {
+	const title = req.body.title;
+	const description = req.body.description;
+	const date = req.body.date;
+	axios
+		.post('/events', {
+			title: title,
+			description: description,
+			date: date
+		})
+		.then(function(response) {
+			req.flash('success_msg', response['data']['message']);
+			res.redirect('/events');
+		})
+		.catch(function(error) {
+			console.log(error);
+		});
+});
+
 // Get Attender Data Handle
 router.get('/attenders', ensureAuthenticated, (req, res) => {
 	const eid = req.query.eid;
