@@ -34,4 +34,22 @@ router.get('/delete/:eventID', ensureAuthenticated, (req, res) => {
 		});
 });
 
+// Get Attender Data Handle
+router.get('/attenders', ensureAuthenticated, (req, res) => {
+	const eid = req.query.eid;
+	axios
+		.get(`/attenders?eid=${eid}`)
+		.then(function(response) {
+			const attenders = response['data']['attenders'];
+			req.flash('success_msg', response['data']['message']);
+			res.render('attenders', {
+				eid: eid,
+				attenders: attenders
+			});
+		})
+		.catch(function(error) {
+			console.log(error);
+		});
+});
+
 module.exports = router;

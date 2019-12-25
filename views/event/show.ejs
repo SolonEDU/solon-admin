@@ -5,11 +5,15 @@
     <div class="card-body">
         <h5 class="card-text">Title: <%- event.title %></h5>
       <p class="card-text">Description: <%- event.description %></p>
-      <div class="row my-1">
+      <div class="row my-3">
           <div class="p-1 col-sm bg-info text-white">
             Number of Attenders: <%- event.numattenders %>
           </div>
       </div>
+      <a href="/events/attenders?eid=<%- event.eid %>" class="btn btn-secondary">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        View Attender Data
+        </a>
       <a href="/events/delete/<%- event.eid %>" class="btn btn-secondary">
         <i class="fa fa-trash" aria-hidden="true"></i>
         Delete Event
