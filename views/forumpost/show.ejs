@@ -1,0 +1,20 @@
+<div class="card border-primary">
+    <h5 class="card-header">
+        Forum Post ID: <%- forumpost.fid %>
+    </h5>
+    <div class="card-body">
+        <h5 class="card-text">Title: <%- forumpost.title %></h5>
+      <p class="card-text">Description: <%- forumpost.description %></p>
+      <a href="/forum/comments?fid=<%- forumpost.fid %>" class="btn btn-secondary">
+        <i class="fa fa-comment" aria-hidden="true"></i>
+        View Comments
+        </a>
+      <a href="/forum/delete/<%- forumpost.fid %>" class="btn btn-secondary">
+        <i class="fa fa-trash" aria-hidden="true"></i>
+        Delete Forum Post
+    </a>
+    </div>
+    <div class="card-footer text-muted">
+        Time Posted: <%- new Date(forumpost.timestamp) %>
+    </div>
+</div>

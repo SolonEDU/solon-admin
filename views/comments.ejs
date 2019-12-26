@@ -9,10 +9,10 @@
             <a class="nav-link" href="/proposals">Proposals</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="/events">Events</a>
+            <a class="nav-link" href="/events">Events</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/forum">Forum</a>
+            <a class="nav-link active" href="/forum">Forum</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="/users">Users</a>
@@ -22,11 +22,11 @@
         </li>
     </ul>
     <hr>
-    <h4 class="text-center my-4">Attenders for Event with Event ID <%- eid %></h4>
+    <h4 class="text-center my-4">Comments for Forum Post with Forum Post ID <%- fid %></h4>
     <div class="row">
-        <% attenders.forEach(function(attender){ %>
+        <% comments.forEach(function(comment){ %>
             <div class="col-md-6 col-lg-4 my-3">
-                <%- include('attender/show', {attender: attender}); %>
+                <%- include('comment/show', {comment: comment}); %>
             </div>
         <% }); %>
     </div>

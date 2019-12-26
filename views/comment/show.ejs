@@ -1,0 +1,12 @@
+<div class="card border-primary">
+    <h5 class="card-header">
+        Comment ID: <%- comment.cid %>
+    </h5>
+    <div class="card-body">
+        <h5 class="card-text">Content: <%- comment.content %></h5>
+        <p class="card-text">User ID: <%- comment.uid %></p>
+    </div>
+    <div class="card-footer text-muted">
+        Time Posted: <%- new Date(comment.timestamp) %>
+    </div>
+</div>
