@@ -53,7 +53,7 @@ router.post('/new', ensureAuthenticated, (req, res) => {
 			description: description,
 			starttime: starttime,
 			endtime: endtime,
-			uid: null
+			uid: -1
 		})
 		.then(function(response) {
 			req.flash('success_msg', response['data']['message']);
