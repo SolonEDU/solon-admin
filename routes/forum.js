@@ -12,6 +12,10 @@ router.get('/', ensureAuthenticated, (req, res) => {
 		.get('/forumposts')
 		.then(function(response) {
 			const forumposts = response['data']['forumposts'];
+			for (i = 0; i < forumposts.length; i++) {
+				forumposts[i]['title'] = JSON.parse(forumposts[i]['title'])['en'];
+				forumposts[i]['description'] = JSON.parse(forumposts[i]['description'])['en'];
+			}
 			res.render('forum', {
 				forumposts: forumposts
 			});
@@ -44,7 +48,7 @@ router.post('/new', ensureAuthenticated, (req, res) => {
 			title: title,
 			description: description,
 			timestamp: timestamp,
-			uid: null
+			uid: -1
 		})
 		.then(function(response) {
 			req.flash('success_msg', response['data']['message']);
@@ -62,6 +66,9 @@ router.get('/comments', ensureAuthenticated, (req, res) => {
 		.get(`comments/forumpost/${fid}`)
 		.then(function(response) {
 			const comments = response['data']['comments'];
+			for (i = 0; i < comments.length; i++) {
+				comments[i]['content'] = JSON.parse(comments[i]['content'])['en'];
+			}
 			req.flash('success_msg', response['data']['message']);
 			res.render('comments', {
 				fid: fid,

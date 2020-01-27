@@ -12,6 +12,10 @@ router.get('/', ensureAuthenticated, (req, res) => {
 		.get('/events')
 		.then(function(response) {
 			const events = response['data']['events'];
+			for (i = 0; i < events.length; i++) {
+				events[i]['title'] = JSON.parse(events[i]['title'])['en'];
+				events[i]['description'] = JSON.parse(events[i]['description'])['en'];
+			}
 			res.render('events', {
 				events: events
 			});
