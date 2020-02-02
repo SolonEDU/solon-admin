@@ -9,7 +9,7 @@ axios.defaults.headers.common['Authorization'] = process.env.AUTHORIZATION;
 // Events Page
 router.get('/', ensureAuthenticated, (req, res) => {
 	axios
-		.get('/events')
+		.get('/events?sort_by=date.desc')
 		.then(function(response) {
 			const events = response['data']['events'];
 			for (i = 0; i < events.length; i++) {

@@ -9,7 +9,7 @@ axios.defaults.headers.common['Authorization'] = process.env.AUTHORIZATION;
 // Forum Page
 router.get('/', ensureAuthenticated, (req, res) => {
 	axios
-		.get('/forumposts')
+		.get('/forumposts?sort_by=numcomments.desc')
 		.then(function(response) {
 			const forumposts = response['data']['forumposts'];
 			for (i = 0; i < forumposts.length; i++) {

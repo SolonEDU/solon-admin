@@ -9,7 +9,7 @@ axios.defaults.headers.common['Authorization'] = process.env.AUTHORIZATION;
 // Proposals Page
 router.get('/', ensureAuthenticated, (req, res) => {
     axios
-        .get('/proposals')
+        .get('/proposals?sort_by=starttime.desc')
         .then(function(response) {
 			const proposals = response['data']['proposals'];
 			for (i = 0; i < proposals.length; i++) {
