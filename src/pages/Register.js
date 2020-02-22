@@ -31,28 +31,36 @@ const Register = ({ history }) => {
 	}
 
 	return (
-		<div>
+		<div className='form-card'>
 			<h1>Register</h1>
+			<br />
 			<form onSubmit={handleRegister}>
-				<label>
-					Email
-					<input
-						name='email'
-						type='email'
-						placeholder='Enter your email address'
-					/>
-				</label>
+				<div className='form-group'>
+					<label>
+						Email
+						<input
+							name='email'
+							type='email'
+							placeholder='Enter your email'
+							className='form-control'
+						/>
+					</label>
+				</div>
+				<div className='form-group'>
+					<label>
+						Password
+						<input
+							name='password'
+							type='password'
+							placeholder='Enter your password'
+							className='form-control'
+						/>
+					</label>
+				</div>
+				<button type='submit' className='btn btn-primary'>
+					Register
+				</button>
 				<br />
-				<label>
-					Password
-					<input
-						name='password'
-						type='password'
-						placeholder='Enter your password'
-					/>
-				</label>
-				<br />
-				<button type='submit'>Register</button>
 				<br />
 				<p>
 					Already have an account? <Link to='/login'>Login</Link>

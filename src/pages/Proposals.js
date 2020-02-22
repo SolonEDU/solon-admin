@@ -1,15 +1,15 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 
-const Dashboard = () => {
+const Proposals = () => {
 	return (
 		<div>
 			<Navbar />
 			<div className='container-fluid'>
-				<h1>Dashboard</h1>
+				<h1>Proposals</h1>
 			</div>
 		</div>
 	);
 };
 
-export default Dashboard;
+export default Proposals;
