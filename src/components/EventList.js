@@ -23,6 +23,12 @@ class EventList extends Component {
 		});
 	}
 
+	deleteEvent(eventID) {
+		axios.delete(`/events/${eventID}`).then(() => {
+			this.fetchData(this.props.sort_by);
+		});
+	}
+
 	componentDidMount() {
 		this.fetchData(this.props.sort_by);
 	}
@@ -56,12 +62,20 @@ class EventList extends Component {
 										<p className='card-text'>
 											Description: {event.endescription}
 										</p>
-										<div class='row my-3'>
-											<div class='p-1 col-sm bg-info text-white'>
+										<div className='row my-3'>
+											<div className='p-1 col-sm bg-info text-white'>
 												Number of Attenders:{' '}
 												{event.numattenders}
 											</div>
 										</div>
+										<button
+											onClick={() => {
+												this.deleteEvent(event.eid);
+											}}
+											className='btn btn-outline-danger'
+										>
+											Delete Event
+										</button>
 									</div>
 									<div className='card-footer text-muted'>
 										Date: {event.date}

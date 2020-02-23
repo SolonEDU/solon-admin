@@ -23,6 +23,12 @@ class ForumpostList extends Component {
 		});
 	}
 
+	deleteForumpost(forumpostID) {
+		axios.delete(`/forumposts/${forumpostID}`).then(() => {
+			this.fetchData(this.props.sort_by);
+		});
+	}
+
 	componentDidMount() {
 		this.fetchData(this.props.sort_by);
 	}
@@ -63,6 +69,16 @@ class ForumpostList extends Component {
 											Number of Comments:{' '}
 											{forumpost.numcomments}
 										</p>
+										<button
+											onClick={() => {
+												this.deleteForumpost(
+													forumpost.fid
+												);
+											}}
+											className='btn btn-outline-danger'
+										>
+											Delete Forum Post
+										</button>
 									</div>
 									<div className='card-footer text-muted'>
 										Date Created: {forumpost.timestamp}

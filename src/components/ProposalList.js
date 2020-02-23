@@ -16,10 +16,17 @@ class ProposalList extends Component {
 
 	fetchData(sort_by) {
 		axios.get(`/proposals?sort_by=${sort_by}`).then(res => {
+			console.log(res.data.proposals);
 			this.setState({
 				loading: false,
 				proposals: res.data.proposals
 			});
+		});
+	}
+
+	deleteProposal(proposalID) {
+		axios.delete(`/proposals/${proposalID}`).then(() => {
+			this.fetchData(this.props.sort_by);
 		});
 	}
 
@@ -73,6 +80,16 @@ class ProposalList extends Component {
 												{proposal.numvotes}
 											</div>
 										</div>
+										<button
+											onClick={() => {
+												this.deleteProposal(
+													proposal.pid
+												);
+											}}
+											className='btn btn-outline-danger'
+										>
+											Delete Proposal
+										</button>
 									</div>
 									<div className='card-footer text-muted'>
 										Start Time: {proposal.starttime}

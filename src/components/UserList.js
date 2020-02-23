@@ -23,6 +23,12 @@ class UserList extends Component {
 		});
 	}
 
+	deleteUser(userID) {
+		axios.delete(`/users/${userID}`).then(() => {
+			this.fetchData();
+		});
+	}
+
 	componentDidMount() {
 		this.fetchData();
 	}
@@ -51,6 +57,14 @@ class UserList extends Component {
 											Full Name: {user.firstname}{' '}
 											{user.lastname}
 										</p>
+										<button
+											onClick={() => {
+												this.deleteUser(user.uid);
+											}}
+											className='btn btn-outline-danger'
+										>
+											Delete User
+										</button>
 									</div>
 									<div className='card-footer text-muted'>
 										Preferred Language: {user.lang}
