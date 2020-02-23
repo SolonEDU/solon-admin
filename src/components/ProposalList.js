@@ -76,7 +76,7 @@ class ProposalList extends Component {
 									</div>
 									<div className='card-footer text-muted'>
 										Start Time: {proposal.starttime}
-										<br />
+										<hr />
 										End Time: {proposal.endtime}
 									</div>
 								</div>

@@ -56,13 +56,16 @@ class EventList extends Component {
 										<p className='card-text'>
 											Description: {event.endescription}
 										</p>
-										<p className='card-text'>
-											Number of Attenders:{' '}
-											{event.numattenders}
-										</p>
+										<div class='row my-3'>
+											<div class='p-1 col-sm bg-info text-white'>
+												Number of Attenders:{' '}
+												{event.numattenders}
+											</div>
+										</div>
 									</div>
 									<div className='card-footer text-muted'>
-										Date: {event.date} <br />
+										Date: {event.date}
+										<hr />
 										Date Created: {event.datecreated}
 									</div>
 								</div>
