@@ -5,7 +5,7 @@ const Events = () => {
 	return (
 		<div>
 			<Navbar />
-			<div className='container-fluid'>
+			<div className='container text-center'>
 				<h1>Events</h1>
 			</div>
 		</div>

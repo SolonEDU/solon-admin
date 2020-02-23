@@ -5,7 +5,7 @@ const Forum = () => {
 	return (
 		<div>
 			<Navbar />
-			<div className='container-fluid'>
+			<div className='container text-center'>
 				<h1>Forum</h1>
 			</div>
 		</div>

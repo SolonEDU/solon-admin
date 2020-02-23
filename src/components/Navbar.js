@@ -4,7 +4,7 @@ import app from '../base';
 
 const Navbar = () => {
 	return (
-		<nav className='navbar navbar-expand-lg navbar-light'>
+		<nav className='navbar navbar-expand-md navbar-light'>
 			<Link className='navbar-brand' to='/'>
 				Solon Admin
 			</Link>
