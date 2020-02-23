@@ -53,17 +53,26 @@ class ProposalList extends Component {
 									</div>
 									<div className='card-body'>
 										<h4 className='card-title'>
-											{proposal.entitle}
+											Title: {proposal.entitle}
 										</h4>
 										<p className='card-text'>
+											Description:{' '}
 											{proposal.endescription}
 										</p>
-										<h5 className='card-title'>Votes</h5>
-										<p className='card-text'>
-											yes: {proposal.numyes} <br />
-											no: {proposal.numno} <br />
-											total: {proposal.numvotes}
-										</p>
+										<div className='row mt-3 mb-1'>
+											<div className='p-1 col-sm bg-success text-white'>
+												Yes: {proposal.numyes}
+											</div>
+											<div className='p-1 col-sm bg-danger text-white'>
+												No: {proposal.numno}
+											</div>
+										</div>
+										<div className='row mb-3 mt-1'>
+											<div className='p-1 col-sm bg-info text-white'>
+												Total Number of Votes:{' '}
+												{proposal.numvotes}
+											</div>
+										</div>
 									</div>
 									<div className='card-footer text-muted'>
 										Start Time: {proposal.starttime}
