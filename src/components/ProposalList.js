@@ -39,33 +39,22 @@ class ProposalList extends Component {
 				{this.state.loading ? (
 					<p>Loading...</p>
 				) : (
-					// <div>
-					// 	<ul className='proposallist'>
-					// 		{this.state.proposals.map(proposal => (
-					// 			<li className='proposal' key={proposal.pid}>
-					// 				<p>Proposal ID: {proposal.pid} </p>
-					// 				<h4>{proposal.entitle}</h4>
-					// 				<p>Description: {proposal.endescription}</p>
-					// 			</li>
-					// 		))}
-					// 	</ul>
-					// </div>
 					<div className='row'>
 						{this.state.proposals.map(proposal => (
 							<div
 								className='col-lg-4 col-md-6 my-4'
 								key={proposal.pid}
 							>
-								<div className='card text-center'>
+								<div className='card border-dark text-center'>
 									<div className='card-header'>
 										Proposal ID: {proposal.pid}
 										<br />
 										User ID of Creator: {proposal.uid}
 									</div>
 									<div className='card-body'>
-										<h5 className='card-title'>
+										<h4 className='card-title'>
 											{proposal.entitle}
-										</h5>
+										</h4>
 										<p className='card-text'>
 											{proposal.endescription}
 										</p>
