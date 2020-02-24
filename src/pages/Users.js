@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
-import UserList from '../components/UserList';
+import UserList from '../components/users/UserList';
 
 class Users extends Component {
 	render() {

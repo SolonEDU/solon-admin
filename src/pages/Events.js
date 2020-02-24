@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
-import EventList from '../components/EventList';
-import EventSortDropdown from '../components/EventSortDropdown';
+import EventList from '../components/events/EventList';
+import EventSortDropdown from '../components/events/EventSortDropdown';
 
 class Events extends Component {
 	constructor() {

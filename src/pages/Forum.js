@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
-import ForumpostList from '../components/ForumpostList';
-import ForumSortDropdown from '../components/ForumSortDropdown';
+import ForumpostList from '../components/forum/ForumpostList';
+import ForumSortDropdown from '../components/forum/ForumSortDropdown';
 
 class Forum extends Component {
 	constructor() {

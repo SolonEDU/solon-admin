@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
-import ProposalList from '../components/ProposalList';
-import ProposalSortDropdown from '../components/ProposalSortDropdown';
+import ProposalList from '../components/proposals/ProposalList';
+import ProposalSortDropdown from '../components/proposals/ProposalSortDropdown';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
