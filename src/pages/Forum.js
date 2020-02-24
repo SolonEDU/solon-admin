@@ -28,7 +28,9 @@ class Forum extends Component {
 						onDropdownChange={this.handleDropdownChange}
 					/>
 					<ForumpostList sort_by={this.state.sort_by} />
-					<button className='fab btn-primary'>+</button>
+					<button className='fab btn-primary'>
+						<i class='fas fa-plus'></i>
+					</button>
 				</div>
 			</div>
 		);

@@ -28,7 +28,9 @@ class Events extends Component {
 						onDropdownChange={this.handleDropdownChange}
 					/>
 					<EventList sort_by={this.state.sort_by} />
-					<button className='fab btn-primary'>+</button>
+					<button className='fab btn-primary'>
+						<i class='fas fa-plus'></i>
+					</button>
 				</div>
 			</div>
 		);

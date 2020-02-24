@@ -70,7 +70,7 @@ class Proposals extends Component {
 						data-toggle='modal'
 						data-target='#newProposalModal'
 					>
-						+
+						<i class='fas fa-plus'></i>
 					</button>
 				</div>
 				<div

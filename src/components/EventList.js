@@ -74,6 +74,7 @@ class EventList extends Component {
 											}}
 											className='btn btn-outline-danger'
 										>
+											<i class='fas fa-trash-alt'></i>
 											Delete Event
 										</button>
 									</div>

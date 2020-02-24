@@ -87,6 +87,7 @@ class ProposalList extends Component {
 											}}
 											className='btn btn-outline-danger'
 										>
+											<i class='fas fa-trash-alt'></i>
 											Delete Proposal
 										</button>
 									</div>
