@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import ForumpostList from '../components/ForumpostList';
+import ForumSortDropdown from '../components/ForumSortDropdown';
 
 class Forum extends Component {
 	constructor() {
@@ -10,9 +11,9 @@ class Forum extends Component {
 		};
 	}
 
-	handleDropdownChange = event => {
+	handleDropdownChange = value => {
 		this.setState({
-			sort_by: event.target.value
+			sort_by: value
 		});
 	};
 
@@ -22,23 +23,10 @@ class Forum extends Component {
 				<Navbar />
 				<div className='container text-center'>
 					<h1>Forum</h1>
-					<select
-						value={this.state.sort_by}
-						onChange={this.handleDropdownChange}
-					>
-						<option value='timestamp.desc'>
-							Timestamp Descending
-						</option>
-						<option value='timestamp.asc'>
-							Timestamp Ascending
-						</option>
-						<option value='numcomments.desc'>
-							Number of Comments Descending
-						</option>
-						<option value='numcomments.asc'>
-							Number of Comments Ascending
-						</option>
-					</select>
+					<ForumSortDropdown
+						sort_by={this.state.sort_by}
+						onDropdownChange={this.handleDropdownChange}
+					/>
 					<ForumpostList sort_by={this.state.sort_by} />
 					<button className='fab btn-primary'>+</button>
 				</div>

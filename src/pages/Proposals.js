@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import ProposalList from '../components/ProposalList';
+import ProposalSortDropdown from '../components/ProposalSortDropdown';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
@@ -16,9 +17,9 @@ class Proposals extends Component {
 		};
 	}
 
-	handleDropdownChange = event => {
+	handleDropdownChange = value => {
 		this.setState({
-			sort_by: event.target.value
+			sort_by: value
 		});
 	};
 
@@ -58,27 +59,10 @@ class Proposals extends Component {
 				<Navbar />
 				<div className='container text-center'>
 					<h1>Proposals</h1>
-					<select
-						value={this.state.sort_by}
-						onChange={this.handleDropdownChange}
-					>
-						<option value='starttime.desc'>
-							Start Time Descending
-						</option>
-						<option value='starttime.asc'>
-							Start Time Ascending
-						</option>
-						<option value='endtime.desc'>
-							End Time Descending
-						</option>
-						<option value='endtime.asc'>End Time Ascending</option>
-						<option value='numvotes.desc'>
-							Number of Votes Descending
-						</option>
-						<option value='numvotes.asc'>
-							Number of Votes Ascending
-						</option>
-					</select>
+					<ProposalSortDropdown
+						sort_by={this.state.sort_by}
+						onDropdownChange={this.handleDropdownChange}
+					/>
 					<ProposalList sort_by={this.state.sort_by} />
 					<button
 						type='button'

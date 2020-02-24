@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from '../components/Navbar';
 import EventList from '../components/EventList';
+import EventSortDropdown from '../components/EventSortDropdown';
 
 class Events extends Component {
 	constructor() {
@@ -10,9 +11,9 @@ class Events extends Component {
 		};
 	}
 
-	handleDropdownChange = event => {
+	handleDropdownChange = value => {
 		this.setState({
-			sort_by: event.target.value
+			sort_by: value
 		});
 	};
 
@@ -22,19 +23,10 @@ class Events extends Component {
 				<Navbar />
 				<div className='container text-center'>
 					<h1>Events</h1>
-					<select
-						value={this.state.sort_by}
-						onChange={this.handleDropdownChange}
-					>
-						<option value='date.desc'>Date Descending</option>
-						<option value='date.asc'>Date Ascending</option>
-						<option value='numattenders.desc'>
-							Number of Attenders Descending
-						</option>
-						<option value='numattenders.asc'>
-							Number of Attenders Ascending
-						</option>
-					</select>
+					<EventSortDropdown
+						sort_by={this.state.sort_by}
+						onDropdownChange={this.handleDropdownChange}
+					/>
 					<EventList sort_by={this.state.sort_by} />
 					<button className='fab btn-primary'>+</button>
 				</div>
