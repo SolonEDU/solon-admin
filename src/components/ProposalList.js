@@ -16,7 +16,6 @@ class ProposalList extends Component {
 
 	fetchData(sort_by) {
 		axios.get(`/proposals?sort_by=${sort_by}`).then(res => {
-			console.log(res.data.proposals);
 			this.setState({
 				loading: false,
 				proposals: res.data.proposals

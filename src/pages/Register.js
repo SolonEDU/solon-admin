@@ -36,26 +36,22 @@ const Register = ({ history }) => {
 			<br />
 			<form onSubmit={handleRegister}>
 				<div className='form-group'>
-					<label>
-						Email
-						<input
-							name='email'
-							type='email'
-							placeholder='Enter your email'
-							className='form-control'
-						/>
-					</label>
+					<label>Email</label>
+					<input
+						name='email'
+						type='email'
+						placeholder='Enter your email'
+						className='form-control'
+					/>
 				</div>
 				<div className='form-group'>
-					<label>
-						Password
-						<input
-							name='password'
-							type='password'
-							placeholder='Enter your password'
-							className='form-control'
-						/>
-					</label>
+					<label>Password</label>
+					<input
+						name='password'
+						type='password'
+						placeholder='Enter your password'
+						className='form-control'
+					/>
 				</div>
 				<button type='submit' className='btn btn-primary'>
 					Register

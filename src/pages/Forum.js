@@ -40,6 +40,7 @@ class Forum extends Component {
 						</option>
 					</select>
 					<ForumpostList sort_by={this.state.sort_by} />
+					<button className='fab btn-primary'>+</button>
 				</div>
 			</div>
 		);

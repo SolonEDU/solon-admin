@@ -36,6 +36,7 @@ class Events extends Component {
 						</option>
 					</select>
 					<EventList sort_by={this.state.sort_by} />
+					<button className='fab btn-primary'>+</button>
 				</div>
 			</div>
 		);

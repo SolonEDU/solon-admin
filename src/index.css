@@ -16,41 +16,6 @@ h1 {
 	font-weight: 700;
 }
 
-a {
-	color: #f50057;
-}
-
-a:hover {
-	color: #d3004a;
-}
-
-.btn-primary {
-	color: white;
-	background-color: #f50057;
-	border-color: #f50057;
-	border-radius: 10px;
-}
-
-.btn-primary:hover {
-	color: white;
-	background-color: #d3004a;
-	border-color: #d3004a;
-	border-radius: 10px;
-}
-
-.btn-outline-primary {
-	color: #f50057;
-	background-color: transparent;
-	background-image: none;
-	border-color: #f50057;
-}
-
-.btn-outline-primary:hover {
-	color: white;
-	background-color: #f50057;
-	border-color: #f50057;
-}
-
 .form-card {
 	text-align: center;
 	border-radius: 50px;
@@ -58,6 +23,7 @@ a:hover {
 	width: 50%;
 	margin: auto;
 	margin-top: 100px;
+	margin-bottom: 100px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -69,4 +35,30 @@ a:hover {
 
 .nav-item {
 	margin: 0px 10px;
+}
+
+.fab {
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	color: white;
+	border-radius: 50px;
+	box-shadow: 4px 4px 6px #999;
+}
+
+.fab:focus {
+	outline: none;
+}
+
+.create-card {
+	text-align: center;
+	border-radius: 50px;
+	padding: 50px;
+	width: 75%;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
