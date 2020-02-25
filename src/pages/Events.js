@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import EventList from '../components/events/EventList';
 import EventSortDropdown from '../components/events/EventSortDropdown';
+import { Button } from 'reactstrap';
 
 class Events extends Component {
 	constructor() {
@@ -28,9 +29,9 @@ class Events extends Component {
 						onDropdownChange={this.handleDropdownChange}
 					/>
 					<EventList sort_by={this.state.sort_by} />
-					<button className='fab btn-primary'>
-						<i class='fas fa-plus'></i>
-					</button>
+					<Button color='primary' className='fab'>
+						<i className='fas fa-plus'></i>
+					</Button>
 				</div>
 			</div>
 		);

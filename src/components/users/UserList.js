@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import {
+	Card,
+	Button,
+	CardHeader,
+	CardFooter,
+	CardBody,
+	CardTitle,
+	CardText
+} from 'reactstrap';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
@@ -45,31 +54,31 @@ class UserList extends Component {
 								className='col-lg-4 col-md-6 my-4'
 								key={user.uid}
 							>
-								<div className='card border-dark text-center'>
-									<div className='card-header'>
-										User ID: {user.uid}
-									</div>
-									<div className='card-body'>
-										<h4 className='card-title'>
-											Email: {user.email}
-										</h4>
-										<p className='card-text'>
+								<Card outline color='secondary'>
+									<CardHeader>User ID: {user.uid}</CardHeader>
+									<CardBody>
+										<CardTitle>
+											<h5>Email: {user.email}</h5>
+										</CardTitle>
+										<CardText>
 											Full Name: {user.firstname}{' '}
 											{user.lastname}
-										</p>
-										<button
+										</CardText>
+										<Button
+											outline
+											color='danger'
 											onClick={() => {
 												this.deleteUser(user.uid);
 											}}
-											className='btn btn-outline-danger'
 										>
+											<i class='fas fa-trash-alt'></i>
 											Delete User
-										</button>
-									</div>
-									<div className='card-footer text-muted'>
+										</Button>
+									</CardBody>
+									<CardFooter>
 										Preferred Language: {user.lang}
-									</div>
-								</div>
+									</CardFooter>
+								</Card>
 							</div>
 						))}
 					</div>

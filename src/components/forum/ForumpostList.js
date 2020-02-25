@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import {
+	Card,
+	Button,
+	CardHeader,
+	CardFooter,
+	CardBody,
+	CardTitle,
+	CardText
+} from 'reactstrap';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
@@ -51,40 +60,43 @@ class ForumpostList extends Component {
 								className='col-lg-4 col-md-6 my-4'
 								key={forumpost.fid}
 							>
-								<div className='card border-dark text-center'>
-									<div className='card-header'>
+								<Card outline color='secondary'>
+									<CardHeader>
 										Forum Post ID: {forumpost.fid}
 										<br />
 										User ID of Creator: {forumpost.uid}
-									</div>
-									<div className='card-body'>
-										<h4 className='card-title'>
-											Title: {forumpost.entitle}
-										</h4>
-										<p className='card-text'>
+									</CardHeader>
+									<CardBody>
+										<CardTitle>
+											<h5>Title: {forumpost.entitle}</h5>
+										</CardTitle>
+										<CardText>
 											Description:{' '}
 											{forumpost.endescription}
-										</p>
-										<p className='card-text'>
-											Number of Comments:{' '}
-											{forumpost.numcomments}
-										</p>
-										<button
+										</CardText>
+										<div className='row my-3'>
+											<div className='p-1 col-sm bg-info text-white'>
+												Number of Comments:{' '}
+												{forumpost.numcomments}
+											</div>
+										</div>
+										<Button
+											outline
+											color='danger'
 											onClick={() => {
 												this.deleteForumpost(
 													forumpost.fid
 												);
 											}}
-											className='btn btn-outline-danger'
 										>
 											<i class='fas fa-trash-alt'></i>
 											Delete Forum Post
-										</button>
-									</div>
-									<div className='card-footer text-muted'>
+										</Button>
+									</CardBody>
+									<CardFooter>
 										Date Created: {forumpost.timestamp}
-									</div>
-								</div>
+									</CardFooter>
+								</Card>
 							</div>
 						))}
 					</div>

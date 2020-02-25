@@ -3,8 +3,9 @@ import { withRouter, Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import app from '../base';
 import { AuthContext } from '../Auth';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const Login = ({ history }) => {
+const Login = props => {
 	const handleLogin = useCallback(
 		async event => {
 			event.preventDefault();
@@ -13,12 +14,12 @@ const Login = ({ history }) => {
 				await app
 					.auth()
 					.signInWithEmailAndPassword(email.value, password.value);
-				history.push('/');
+				props.history.push('/');
 			} catch (error) {
 				alert(error);
 			}
 		},
-		[history]
+		[props.history]
 	);
 
 	const { currentUser } = useContext(AuthContext);
@@ -31,34 +32,31 @@ const Login = ({ history }) => {
 		<div className='form-card'>
 			<h1>Login</h1>
 			<br />
-			<form onSubmit={handleLogin}>
-				<div className='form-group'>
-					<label>Email</label>
-					<input
-						name='email'
+			<Form onSubmit={handleLogin}>
+				<FormGroup>
+					<Label for='email'>Email</Label>
+					<Input
 						type='email'
+						name='email'
+						id='email'
 						placeholder='Enter your email'
-						className='form-control'
 					/>
-				</div>
-				<div className='form-group'>
-					<label>Password</label>
-					<input
-						name='password'
+				</FormGroup>
+				<FormGroup>
+					<Label for='password'>Password</Label>
+					<Input
 						type='password'
+						name='password'
+						id='password'
 						placeholder='Enter your password'
-						className='form-control'
 					/>
-				</div>
-				<button type='submit' className='btn btn-primary'>
-					Login
-				</button>
-				<br />
-				<br />
-				<p>
-					Don't have an account? <Link to='/register'>Register</Link>
-				</p>
-			</form>
+				</FormGroup>
+				<Button color='primary'>Login</Button>
+			</Form>
+			<br />
+			<p>
+				Don't have an account? <Link to='/register'>Register</Link>
+			</p>
 		</div>
 	);
 };

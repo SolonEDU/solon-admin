@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import ForumpostList from '../components/forum/ForumpostList';
 import ForumSortDropdown from '../components/forum/ForumSortDropdown';
+import { Button } from 'reactstrap';
 
 class Forum extends Component {
 	constructor() {
@@ -28,9 +29,9 @@ class Forum extends Component {
 						onDropdownChange={this.handleDropdownChange}
 					/>
 					<ForumpostList sort_by={this.state.sort_by} />
-					<button className='fab btn-primary'>
-						<i class='fas fa-plus'></i>
-					</button>
+					<Button color='primary' className='fab'>
+						<i className='fas fa-plus'></i>
+					</Button>
 				</div>
 			</div>
 		);

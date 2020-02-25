@@ -51,8 +51,9 @@ const NavigationBar = props => {
 						</NavItem>
 						<NavItem>
 							<Button
+								outline
+								color='primary'
 								onClick={() => app.auth().signOut()}
-								color='outline-primary'
 							>
 								Sign Out
 							</Button>

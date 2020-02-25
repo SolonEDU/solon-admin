@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import {
+	Card,
+	Button,
+	CardHeader,
+	CardFooter,
+	CardBody,
+	CardTitle,
+	CardText
+} from 'reactstrap';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
@@ -51,39 +60,40 @@ class EventList extends Component {
 								className='col-lg-4 col-md-6 my-4'
 								key={event.eid}
 							>
-								<div className='card border-dark text-center'>
-									<div className='card-header'>
+								<Card outline color='secondary'>
+									<CardHeader>
 										Event ID: {event.eid}
-									</div>
-									<div className='card-body'>
-										<h4 className='card-title'>
-											Title: {event.entitle}
-										</h4>
-										<p className='card-text'>
+									</CardHeader>
+									<CardBody>
+										<CardTitle>
+											<h5>Title: {event.entitle}</h5>
+										</CardTitle>
+										<CardText>
 											Description: {event.endescription}
-										</p>
+										</CardText>
 										<div className='row my-3'>
 											<div className='p-1 col-sm bg-info text-white'>
 												Number of Attenders:{' '}
 												{event.numattenders}
 											</div>
 										</div>
-										<button
+										<Button
+											outline
+											color='danger'
 											onClick={() => {
 												this.deleteEvent(event.eid);
 											}}
-											className='btn btn-outline-danger'
 										>
 											<i class='fas fa-trash-alt'></i>
 											Delete Event
-										</button>
-									</div>
-									<div className='card-footer text-muted'>
+										</Button>
+									</CardBody>
+									<CardFooter>
 										Date: {event.date}
 										<hr />
 										Date Created: {event.datecreated}
-									</div>
-								</div>
+									</CardFooter>
+								</Card>
 							</div>
 						))}
 					</div>

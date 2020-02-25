@@ -1,4 +1,13 @@
 import React, { Component } from 'react';
+import {
+	Card,
+	Button,
+	CardHeader,
+	CardFooter,
+	CardBody,
+	CardTitle,
+	CardText
+} from 'reactstrap';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
@@ -51,20 +60,20 @@ class ProposalList extends Component {
 								className='col-lg-4 col-md-6 my-4'
 								key={proposal.pid}
 							>
-								<div className='card border-dark text-center'>
-									<div className='card-header'>
+								<Card outline color='secondary'>
+									<CardHeader>
 										Proposal ID: {proposal.pid}
 										<br />
 										User ID of Creator: {proposal.uid}
-									</div>
-									<div className='card-body'>
-										<h4 className='card-title'>
-											Title: {proposal.entitle}
-										</h4>
-										<p className='card-text'>
+									</CardHeader>
+									<CardBody>
+										<CardTitle>
+											<h5>Title: {proposal.entitle}</h5>
+										</CardTitle>
+										<CardText>
 											Description:{' '}
 											{proposal.endescription}
-										</p>
+										</CardText>
 										<div className='row mt-3 mb-1'>
 											<div className='p-1 col-sm bg-success text-white'>
 												Yes: {proposal.numyes}
@@ -79,24 +88,25 @@ class ProposalList extends Component {
 												{proposal.numvotes}
 											</div>
 										</div>
-										<button
+										<Button
+											outline
+											color='danger'
 											onClick={() => {
 												this.deleteProposal(
 													proposal.pid
 												);
 											}}
-											className='btn btn-outline-danger'
 										>
 											<i class='fas fa-trash-alt'></i>
 											Delete Proposal
-										</button>
-									</div>
-									<div className='card-footer text-muted'>
+										</Button>
+									</CardBody>
+									<CardFooter>
 										Start Time: {proposal.starttime}
 										<hr />
 										End Time: {proposal.endtime}
-									</div>
-								</div>
+									</CardFooter>
+								</Card>
 							</div>
 						))}
 					</div>

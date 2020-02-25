@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import ProposalList from '../components/proposals/ProposalList';
 import ProposalSortDropdown from '../components/proposals/ProposalSortDropdown';
+import { Button } from 'reactstrap';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
@@ -64,14 +65,14 @@ class Proposals extends Component {
 						onDropdownChange={this.handleDropdownChange}
 					/>
 					<ProposalList sort_by={this.state.sort_by} />
-					<button
-						type='button'
-						className='fab btn-primary'
+					<Button
+						color='primary'
+						className='fab'
 						data-toggle='modal'
 						data-target='#newProposalModal'
 					>
-						<i class='fas fa-plus'></i>
-					</button>
+						<i className='fas fa-plus'></i>
+					</Button>
 				</div>
 				<div
 					className='modal fade text-center'
