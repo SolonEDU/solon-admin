@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
+import NavigationBar from '../components/NavigationBar';
 import EventList from '../components/events/EventList';
 import EventSortDropdown from '../components/events/EventSortDropdown';
 
@@ -20,7 +20,7 @@ class Events extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
+				<NavigationBar />
 				<div className='container text-center'>
 					<h1>Events</h1>
 					<EventSortDropdown

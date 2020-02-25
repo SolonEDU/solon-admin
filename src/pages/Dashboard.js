@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Navbar from '../components/Navbar';
+import NavigationBar from '../components/NavigationBar';
 import { AuthContext } from '../Auth';
 
 const Dashboard = () => {
@@ -7,7 +7,7 @@ const Dashboard = () => {
 
 	return (
 		<div>
-			<Navbar />
+			<NavigationBar />
 			<div className='container text-center'>
 				<h1>Dashboard</h1>
 				<p>Welcome {currentUser.email} </p>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
+import NavigationBar from '../components/NavigationBar';
 import ProposalList from '../components/proposals/ProposalList';
 import ProposalSortDropdown from '../components/proposals/ProposalSortDropdown';
 
@@ -56,7 +56,7 @@ class Proposals extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
+				<NavigationBar />
 				<div className='container text-center'>
 					<h1>Proposals</h1>
 					<ProposalSortDropdown

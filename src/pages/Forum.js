@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../components/Navbar';
+import NavigationBar from '../components/NavigationBar';
 import ForumpostList from '../components/forum/ForumpostList';
 import ForumSortDropdown from '../components/forum/ForumSortDropdown';
 
@@ -20,7 +20,7 @@ class Forum extends Component {
 	render() {
 		return (
 			<div>
-				<Navbar />
+				<NavigationBar />
 				<div className='container text-center'>
 					<h1>Forum</h1>
 					<ForumSortDropdown
