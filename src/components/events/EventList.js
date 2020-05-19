@@ -14,6 +14,9 @@ axios.defaults.baseURL = 'https://api.solonedu.com';
 axios.defaults.headers.common['Authorization'] =
 	process.env.REACT_APP_AUTHORIZATION;
 
+var moment = require('moment');
+moment().format();
+
 class EventList extends Component {
 	constructor(props) {
 		super(props);
@@ -25,9 +28,17 @@ class EventList extends Component {
 
 	fetchData(sort_by) {
 		axios.get(`/events?sort_by=${sort_by}`).then(res => {
+			var events = res.data.events;
+			var i;
+			for (i = 0; i < events.length; i++) {
+				var formatdate = moment(events[i].date).format('lll');
+				events[i].date = formatdate;
+				var formatcreated = moment(events[i].datecreated).format('lll');
+				events[i].datecreated = formatcreated;
+			}
 			this.setState({
 				loading: false,
-				events: res.data.events
+				events: events
 			});
 		});
 	}
@@ -56,25 +67,17 @@ class EventList extends Component {
 				) : (
 					<div className='row'>
 						{this.state.events.map(event => (
-							<div
-								className='col-lg-4 col-md-6 my-4'
-								key={event.eid}
-							>
+							<div className='col-lg-4 col-md-6 my-4' key={event.eid}>
 								<Card outline color='secondary'>
-									<CardHeader>
-										Event ID: {event.eid}
-									</CardHeader>
+									<CardHeader>Event ID: {event.eid}</CardHeader>
 									<CardBody>
 										<CardTitle>
 											<h5>Title: {event.entitle}</h5>
 										</CardTitle>
-										<CardText>
-											Description: {event.endescription}
-										</CardText>
+										<CardText>Description: {event.endescription}</CardText>
 										<div className='row my-3'>
 											<div className='p-1 col-sm bg-info text-white'>
-												Number of Attenders:{' '}
-												{event.numattenders}
+												Number of Attenders: {event.numattenders}
 											</div>
 										</div>
 										<Button
@@ -84,7 +87,7 @@ class EventList extends Component {
 												this.deleteEvent(event.eid);
 											}}
 										>
-											<i class='fas fa-trash-alt'></i>
+											<i className='fas fa-trash-alt'></i>
 											Delete Event
 										</Button>
 									</CardBody>

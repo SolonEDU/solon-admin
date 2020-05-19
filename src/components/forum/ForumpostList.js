@@ -14,6 +14,9 @@ axios.defaults.baseURL = 'https://api.solonedu.com';
 axios.defaults.headers.common['Authorization'] =
 	process.env.REACT_APP_AUTHORIZATION;
 
+var moment = require('moment');
+moment().format();
+
 class ForumpostList extends Component {
 	constructor(props) {
 		super(props);
@@ -25,6 +28,12 @@ class ForumpostList extends Component {
 
 	fetchData(sort_by) {
 		axios.get(`/forumposts?sort_by=${sort_by}`).then(res => {
+			var forumposts = res.data.forumposts;
+			var i;
+			for (i = 0; i < forumposts.length; i++) {
+				var formattimestamp = moment(forumposts[i].timestamp).format('lll');
+				forumposts[i].timestamp = formattimestamp;
+			}
 			this.setState({
 				loading: false,
 				forumposts: res.data.forumposts
@@ -56,10 +65,7 @@ class ForumpostList extends Component {
 				) : (
 					<div className='row'>
 						{this.state.forumposts.map(forumpost => (
-							<div
-								className='col-lg-4 col-md-6 my-4'
-								key={forumpost.fid}
-							>
+							<div className='col-lg-4 col-md-6 my-4' key={forumpost.fid}>
 								<Card outline color='secondary'>
 									<CardHeader>
 										Forum Post ID: {forumpost.fid}
@@ -70,32 +76,24 @@ class ForumpostList extends Component {
 										<CardTitle>
 											<h5>Title: {forumpost.entitle}</h5>
 										</CardTitle>
-										<CardText>
-											Description:{' '}
-											{forumpost.endescription}
-										</CardText>
+										<CardText>Description: {forumpost.endescription}</CardText>
 										<div className='row my-3'>
 											<div className='p-1 col-sm bg-info text-white'>
-												Number of Comments:{' '}
-												{forumpost.numcomments}
+												Number of Comments: {forumpost.numcomments}
 											</div>
 										</div>
 										<Button
 											outline
 											color='danger'
 											onClick={() => {
-												this.deleteForumpost(
-													forumpost.fid
-												);
+												this.deleteForumpost(forumpost.fid);
 											}}
 										>
-											<i class='fas fa-trash-alt'></i>
+											<i className='fas fa-trash-alt'></i>
 											Delete Forum Post
 										</Button>
 									</CardBody>
-									<CardFooter>
-										Date Created: {forumpost.timestamp}
-									</CardFooter>
+									<CardFooter>Date Created: {forumpost.timestamp}</CardFooter>
 								</Card>
 							</div>
 						))}

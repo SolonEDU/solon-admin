@@ -25,29 +25,19 @@ const NavigationBar = props => {
 				<Collapse isOpen={isOpen} navbar>
 					<Nav className='ml-auto' navbar>
 						<NavItem>
-							<Link to='/'>
-								<NavLink>Dashboard</NavLink>
-							</Link>
+							<NavLink tag={Link} to='/'>Dashboard</NavLink>
 						</NavItem>
 						<NavItem>
-							<Link to='/proposals'>
-								<NavLink>Proposals</NavLink>
-							</Link>
+							<NavLink tag={Link} to='/proposals'>Proposals</NavLink>
 						</NavItem>
 						<NavItem>
-							<Link to='/events'>
-								<NavLink>Events</NavLink>
-							</Link>
+							<NavLink tag={Link} to='/events'>Events</NavLink>
 						</NavItem>
 						<NavItem>
-							<Link to='/forum'>
-								<NavLink>Forum</NavLink>
-							</Link>
+							<NavLink tag={Link} to='/forum'>Forum</NavLink>
 						</NavItem>
 						<NavItem>
-							<Link to='/users'>
-								<NavLink>Users</NavLink>
-							</Link>
+							<NavLink tag={Link} to='/users'>Users</NavLink>
 						</NavItem>
 						<NavItem>
 							<Button

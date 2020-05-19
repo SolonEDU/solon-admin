@@ -28,7 +28,7 @@ h1 {
 }
 
 .navbar {
-	background-color: #dfdfdf;
+	background-color: white;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	margin-bottom: 25px;
 }
@@ -39,6 +39,7 @@ h1 {
 
 .fab {
 	position: fixed;
+	z-index: 1;
 	width: 60px;
 	height: 60px;
 	bottom: 40px;

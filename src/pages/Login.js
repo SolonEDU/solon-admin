@@ -40,6 +40,7 @@ const Login = props => {
 						name='email'
 						id='email'
 						placeholder='Enter your email'
+						required
 					/>
 				</FormGroup>
 				<FormGroup>
@@ -49,6 +50,7 @@ const Login = props => {
 						name='password'
 						id='password'
 						placeholder='Enter your password'
+						required
 					/>
 				</FormGroup>
 				<Button color='primary'>Login</Button>

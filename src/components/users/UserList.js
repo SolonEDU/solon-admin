@@ -71,7 +71,7 @@ class UserList extends Component {
 												this.deleteUser(user.uid);
 											}}
 										>
-											<i class='fas fa-trash-alt'></i>
+											<i className='fas fa-trash-alt'></i>
 											Delete User
 										</Button>
 									</CardBody>

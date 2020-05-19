@@ -15,65 +15,72 @@ axios.defaults.headers.common['Authorization'] =
 	process.env.REACT_APP_AUTHORIZATION;
 
 class ProposalList extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			loading: true,
-			proposals: null
-		};
-	}
-
-	fetchData(sort_by) {
-		axios.get(`/proposals?sort_by=${sort_by}`).then(res => {
-			this.setState({
-				loading: false,
-				proposals: res.data.proposals
-			});
-		});
-	}
+	handleChange = () => {
+		this.props.onChange();
+	};
 
 	deleteProposal(proposalID) {
 		axios.delete(`/proposals/${proposalID}`).then(() => {
-			this.fetchData(this.props.sort_by);
+			this.handleChange();
 		});
 	}
 
 	componentDidMount() {
-		this.fetchData(this.props.sort_by);
+		this.handleChange();
 	}
 
 	componentDidUpdate(prevProps) {
-		if (this.props.sort_by !== prevProps.sort_by) {
-			this.fetchData(this.props.sort_by);
+		// if (this.props.proposals !== null) {
+		// 	console.log('now len: ' + this.props.proposals.length)
+		// }
+		// if (prevProps.proposals !== null) {
+		// 	console.log('prev len: ' + prevProps.proposals.length)
+		// }
+		// if (this.props.sort_by !== prevProps.sort_by){
+		// 	console.log('update');
+		// 	this.handleChange();
+		// }
+		// else if (this.props.proposals !== null && prevProps.proposals == null) {
+		// 	console.log('update');
+		// 	this.handleChange();
+		// }
+		// else if (this.props.proposals.length !== prevProps.proposals.length) {
+		// 	console.log('update');
+		// 	this.handleChange();
+		// }
+		if (
+			JSON.stringify(this.props.proposals) !==
+			JSON.stringify(prevProps.proposals)
+		) {
+			console.log('update');
+			this.handleChange();
 		}
 	}
 
 	render() {
 		return (
 			<div>
-				{this.state.loading ? (
+				{this.props.loading ? (
 					<p>Loading...</p>
 				) : (
 					<div className='row'>
-						{this.state.proposals.map(proposal => (
-							<div
-								className='col-lg-4 col-md-6 my-4'
-								key={proposal.pid}
-							>
+						{this.props.proposals.map(proposal => (
+							<div className='col-lg-4 col-md-6 my-4' key={proposal.pid}>
 								<Card outline color='secondary'>
 									<CardHeader>
 										Proposal ID: {proposal.pid}
 										<br />
-										User ID of Creator: {proposal.uid}
+										{proposal.uid === -1 ? (
+											<div>Creator: Admin</div>
+										) : (
+											<div>User ID of Creator: {proposal.uid}</div>
+										)}
 									</CardHeader>
 									<CardBody>
 										<CardTitle>
 											<h5>Title: {proposal.entitle}</h5>
 										</CardTitle>
-										<CardText>
-											Description:{' '}
-											{proposal.endescription}
-										</CardText>
+										<CardText>Description: {proposal.endescription}</CardText>
 										<div className='row mt-3 mb-1'>
 											<div className='p-1 col-sm bg-success text-white'>
 												Yes: {proposal.numyes}
@@ -84,20 +91,17 @@ class ProposalList extends Component {
 										</div>
 										<div className='row mb-3 mt-1'>
 											<div className='p-1 col-sm bg-info text-white'>
-												Total Number of Votes:{' '}
-												{proposal.numvotes}
+												Total Number of Votes: {proposal.numvotes}
 											</div>
 										</div>
 										<Button
 											outline
 											color='danger'
 											onClick={() => {
-												this.deleteProposal(
-													proposal.pid
-												);
+												this.deleteProposal(proposal.pid);
 											}}
 										>
-											<i class='fas fa-trash-alt'></i>
+											<i className='fas fa-trash-alt'></i>
 											Delete Proposal
 										</Button>
 									</CardBody>

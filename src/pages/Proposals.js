@@ -2,21 +2,43 @@ import React, { Component } from 'react';
 import NavigationBar from '../components/NavigationBar';
 import ProposalList from '../components/proposals/ProposalList';
 import ProposalSortDropdown from '../components/proposals/ProposalSortDropdown';
-import { Button } from 'reactstrap';
+import ProposalModal from '../components/proposals/ProposalModal';
 
 const axios = require('axios');
 axios.defaults.baseURL = 'https://api.solonedu.com';
 axios.defaults.headers.common['Authorization'] =
 	process.env.REACT_APP_AUTHORIZATION;
 
+	var moment = require('moment');
+	moment().format();
+
 class Proposals extends Component {
 	constructor() {
 		super();
 		this.state = {
+			loading: true,
+			proposals: null,
 			sort_by: 'starttime.desc',
 			daysremaining: '8'
 		};
 	}
+
+	handleProposalsChange = () => {
+		axios.get(`/proposals?sort_by=${this.state.sort_by}`).then(res => {
+			var proposals = res.data.proposals;
+			var i;
+			for (i = 0; i < proposals.length; i++) {
+				var formatstart = moment(proposals[i].starttime).format('lll');
+				proposals[i].starttime = formatstart;
+				var formatend = moment(proposals[i].endtime).format('lll');
+				proposals[i].endtime = formatend;
+			}
+			this.setState({
+				loading: false,
+				proposals: proposals
+			});
+		});
+	};
 
 	handleDropdownChange = value => {
 		this.setState({
@@ -24,25 +46,18 @@ class Proposals extends Component {
 		});
 	};
 
-	handleDaysRemainingChange = event => {
+	handleDaysRemainingChange = value => {
 		this.setState({
-			daysremaining: event.target.value
+			daysremaining: value
 		});
 	};
 
-	addDays = (date, days) => {
-		var result = new Date(date);
-		result.setDate(result.getDate() + days);
-		return result;
-	};
-
-	handleCreateProposal = event => {
-		event.preventDefault();
-		const title = event.target.elements.title.value;
-		const description = event.target.elements.description.value;
+	handleCreateProposal = elements => {
+		const title = elements.title.value;
+		const description = elements.description.value;
 		const daysremaining = this.state.daysremaining;
-		const starttime = new Date();
-		const endtime = this.addDays(starttime, parseInt(daysremaining));
+		const starttime = moment.now();
+		const endtime = moment(starttime).add(daysremaining, 'days');
 		axios
 			.post('/proposals', {
 				title: title,
@@ -51,7 +66,7 @@ class Proposals extends Component {
 				endtime: endtime,
 				uid: -1
 			})
-			.then(console.log('close modal here'));
+			.then(this.handleProposalsChange());
 	};
 
 	render() {
@@ -60,110 +75,21 @@ class Proposals extends Component {
 				<NavigationBar />
 				<div className='container text-center'>
 					<h1>Proposals</h1>
+					<ProposalModal
+						daysremaining={this.state.daysremaining}
+						onFormSubmit={this.handleCreateProposal}
+						onChange={this.handleDaysRemainingChange}
+					/>
 					<ProposalSortDropdown
 						sort_by={this.state.sort_by}
 						onDropdownChange={this.handleDropdownChange}
 					/>
-					<ProposalList sort_by={this.state.sort_by} />
-					<Button
-						color='primary'
-						className='fab'
-						data-toggle='modal'
-						data-target='#newProposalModal'
-					>
-						<i className='fas fa-plus'></i>
-					</Button>
-				</div>
-				<div
-					className='modal fade text-center'
-					id='newProposalModal'
-					tabIndex='-1'
-					role='dialog'
-					aria-labelledby='newProposalModalLabel'
-					aria-hidden='true'
-				>
-					<div className='modal-dialog' role='document'>
-						<div className='modal-content'>
-							<div className='modal-header'>
-								<h5
-									className='modal-title'
-									id='newProposalModalLabel'
-								>
-									New Proposal
-								</h5>
-								<button
-									type='button'
-									className='close'
-									data-dismiss='modal'
-									aria-label='Close'
-								>
-									<span aria-hidden='true'>&times;</span>
-								</button>
-							</div>
-							<form onSubmit={this.handleCreateProposal}>
-								<div className='modal-body'>
-									<div className='form-group'>
-										<label>Title</label>
-										<input
-											name='title'
-											type='text'
-											className='form-control'
-											required
-										/>
-									</div>
-									<div className='form-group'>
-										<label>Description</label>
-										<textarea
-											rows='10'
-											className='form-control'
-											id='description'
-											name='description'
-											required
-										></textarea>
-									</div>
-									<div className='form-group'>
-										<label>
-											Days Until Voting on Proposal Ends:
-										</label>
-										<input
-											type='range'
-											className='form-control'
-											id='daysremaining'
-											name='daysremaining'
-											min='1'
-											max='14'
-											step='1'
-											defaultValue='8'
-											onChange={
-												this.handleDaysRemainingChange
-											}
-										/>
-										<p
-											className='text-center'
-											id='daysremainingtext'
-										>
-											{this.state.daysremaining} days
-										</p>
-									</div>
-								</div>
-								<div className='modal-footer'>
-									<button
-										type='button'
-										className='btn btn-secondary'
-										data-dismiss='modal'
-									>
-										Close
-									</button>
-									<button
-										type='submit'
-										className='btn btn-primary'
-									>
-										Create Proposal
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>
+					<ProposalList
+						loading={this.state.loading}
+						proposals={this.state.proposals}
+						onChange={this.handleProposalsChange}
+						sort_by={this.state.sort_by}
+					/>
 				</div>
 			</div>
 		);

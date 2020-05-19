@@ -43,6 +43,7 @@ const Register = props => {
 						name='email'
 						id='email'
 						placeholder='Enter an email'
+						required
 					/>
 				</FormGroup>
 				<FormGroup>
@@ -52,6 +53,7 @@ const Register = props => {
 						name='password'
 						id='password'
 						placeholder='Enter a password'
+						required
 					/>
 				</FormGroup>
 				<Button color='primary'>Register</Button>
